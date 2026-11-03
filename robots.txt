@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /thank-you.html
-
-Sitemap: https://melzer-antimicrobials-drsambhaji.netlify.app/sitemap.xml
+Disallow: /thank-you
+Sitemap: https://antimicrobial.melzerspeciality.com/sitemap.xml

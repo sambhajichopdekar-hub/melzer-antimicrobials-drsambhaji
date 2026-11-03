@@ -1,16 +1,19 @@
-MELZER INDUSTRY ENQUIRY WEBSITE
+NETLIFY FORMS DEPLOYMENT INSTRUCTIONS
 
-Before publishing:
-1. Confirm the FormSubmit recipient address and complete its activation if needed.
-2. Submit a test enquiry and verify email delivery.
-3. Prefer a company-controlled subdomain under melzerspeciality.com. Configure it in Netlify and update canonical, Open Graph, robots.txt and sitemap.xml URLs to that final domain.
-4. Publish over HTTPS.
-5. Add the final domain to Google Search Console and submit sitemap.xml.
-6. Keep FormSubmit reCAPTCHA enabled; the form also has a honeypot field.
-7. No website can be guaranteed virus-free. Secure the hosting account with MFA, review deploy history and scan the live URL periodically.
+This version removes FormSubmit and posts the enquiry form to Netlify Forms.
 
-Netlify manual deployment:
-- Sign in to the correct Netlify account/team.
-- Open the existing site's Deploys page.
-- Drag the complete extracted folder into the manual deploy area.
-- Test the public URL, enquiry form, HTTPS and response headers.
+1. In Netlify site dashboard, ensure form detection is enabled (Forms settings).
+2. Commit and push these files to the GitHub production branch connected to this Netlify site.
+3. Wait for the production deploy.
+4. Open Netlify > Forms and verify that "industry-enquiry" is detected.
+5. Configure Forms > Submission notifications > Add notification.
+   Netlify email notification recipients must be active members of the Netlify team. If the target mailbox is not a team member, invite it or use an approved webhook/other notification route.
+6. Test with a real submission. Confirm it appears in Verified submissions, inspect Spam submissions, and verify email notification delivery.
+7. The form uses Netlify Akismet spam filtering, a honeypot, and Netlify reCAPTCHA.
+8. Test /thank-you after successful submission.
+
+DOMAIN:
+The canonical URL, robots.txt and sitemap use https://antimicrobial.melzerspeciality.com/. Only publish with this domain once DNS and HTTPS are active. If not yet connected, temporarily change those URLs to your working Netlify URL and update them after domain connection.
+
+SECURITY:
+Form posts to the same Netlify site, not FormSubmit. _headers adds security headers. These reduce common risks but do not guarantee the site is virus-free. Secure GitHub and Netlify with MFA and restrict repository/team access.
